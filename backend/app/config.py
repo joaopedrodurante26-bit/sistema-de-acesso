@@ -14,17 +14,20 @@ def _build_sqlalchemy_uri():
     database = os.getenv("DB_NAME", "access_system")
     user = os.getenv("DB_USER", "sa")
     password = os.getenv("DB_PASSWORD", "")
+    backend = os.getenv("DB_BACKEND", "pymssql").strip().lower()
     driver = os.getenv("DB_DRIVER", "ODBC Driver 18 for SQL Server")
     trust_cert = os.getenv("DB_TRUST_CERT", "yes")
 
     user_quoted = quote_plus(user)
     password_quoted = quote_plus(password)
-    driver_quoted = quote_plus(driver)
+    if backend == "pyodbc":
+        driver_quoted = quote_plus(driver)
+        return (
+            f"mssql+pyodbc://{user_quoted}:{password_quoted}@{host}:{port}/{database}"
+            f"?driver={driver_quoted}&TrustServerCertificate={trust_cert}"
+        )
 
-    return (
-        f"mssql+pyodbc://{user_quoted}:{password_quoted}@{host}:{port}/{database}"
-        f"?driver={driver_quoted}&TrustServerCertificate={trust_cert}"
-    )
+    return f"mssql+pymssql://{user_quoted}:{password_quoted}@{host}:{port}/{database}"
 
 
 class Config:
