@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_HOST = window.location.hostname || "127.0.0.1";
+const API_BASE_URL = `http://${API_HOST}:5000/api`;
 
 async function apiRequest(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {

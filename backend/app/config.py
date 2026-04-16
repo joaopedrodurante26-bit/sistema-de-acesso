@@ -44,5 +44,6 @@ class Config:
         for origin in os.getenv("FRONTEND_ORIGIN", "http://127.0.0.1:5500").split(",")
         if origin.strip()
     ]
+    CORS_ORIGINS.append(r"http://(localhost|127\.0\.0\.1)(:\d+)?")
     ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
     ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "Admin@123456")
