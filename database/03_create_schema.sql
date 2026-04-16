@@ -1,24 +1,3 @@
-/*
-Bootstrap script for local development.
-
-This script creates:
-1) database: access_system
-2) schema/table: dbo.users
-
-For application login/user creation with least privilege, run:
-    database/02_create_app_user.sql
-
-Admin seed remains in application layer (bcrypt):
-    cd backend
-    flask --app run.py seed-admin --username admin --password "Admin@123456"
-*/
-
-IF DB_ID(N'access_system') IS NULL
-BEGIN
-    CREATE DATABASE access_system;
-END
-GO
-
 USE access_system;
 GO
 
