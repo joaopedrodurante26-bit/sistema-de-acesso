@@ -6,9 +6,10 @@ FROM sys.tables
 WHERE name = N'users';
 GO
 
-SELECT name AS index_name
-FROM sys.indexes
-WHERE object_id = OBJECT_ID(N'dbo.users') AND name = N'ix_users_username';
+SELECT kc.name AS unique_constraint_name
+FROM sys.key_constraints kc
+WHERE kc.parent_object_id = OBJECT_ID(N'dbo.users')
+  AND kc.type = 'UQ';
 GO
 
 SELECT TOP 20 id, username, role, is_active, created_at, updated_at

@@ -15,13 +15,3 @@ BEGIN
     );
 END
 GO
-
-IF NOT EXISTS (
-    SELECT 1
-    FROM sys.indexes
-    WHERE name = N'ix_users_username' AND object_id = OBJECT_ID(N'dbo.users')
-)
-BEGIN
-    CREATE INDEX ix_users_username ON dbo.users(username);
-END
-GO
