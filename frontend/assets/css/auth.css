@@ -1,0 +1,40 @@
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.auth-panel {
+  width: min(420px, 100%);
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.4rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.subtitle {
+  color: var(--muted);
+}
+
+.auth-form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.auth-form label {
+  font-weight: 600;
+}
+
+.auth-form input {
+  border: 1px solid #ccd3de;
+  border-radius: 9px;
+  padding: 0.62rem 0.7rem;
+  background: #fcfdff;
+}
+
+.link-row {
+  color: var(--muted);
+}

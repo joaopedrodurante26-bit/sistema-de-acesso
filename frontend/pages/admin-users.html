@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Usuários</title>
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body data-page="admin-users">
+    <main class="dashboard-shell">
+      <header class="topbar">
+        <h1>Gestão de Usuários</h1>
+        <div class="actions">
+          <a class="button-link" href="./dashboard.html">Voltar</a>
+          <button id="logoutBtn" type="button">Sair</button>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Novo usuário</h2>
+        <form id="createUserForm" class="inline-form">
+          <input name="username" type="text" placeholder="username" minlength="3" required />
+          <input name="password" type="password" placeholder="senha (min 8)" minlength="8" required />
+          <select name="role" required>
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+          <button type="submit">Criar</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Lista de usuários</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Papel</th>
+                <th>Ativo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p id="message" class="message" aria-live="polite"></p>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/admin-users.js"></script>
+  </body>
+</html>

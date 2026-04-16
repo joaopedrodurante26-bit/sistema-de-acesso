@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Sistema de Acesso</title>
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body data-page="dashboard">
+    <main class="dashboard-shell">
+      <header class="topbar">
+        <h1>Sistema de Acesso</h1>
+        <button id="logoutBtn" type="button">Sair</button>
+      </header>
+
+      <section class="card">
+        <h2>Bem-vindo</h2>
+        <p><strong>Usuário:</strong> <span id="username">-</span></p>
+        <p><strong>Papel:</strong> <span id="role">-</span></p>
+      </section>
+
+      <section class="card" id="adminCard" hidden>
+        <h2>Administração</h2>
+        <p>Você possui permissão para gerenciar usuários.</p>
+        <a class="button-link" href="./admin-users.html">Abrir gestão de usuários</a>
+      </section>
+
+      <p id="message" class="message" aria-live="polite"></p>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+  </body>
+</html>
