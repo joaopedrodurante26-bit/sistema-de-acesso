@@ -1,2 +1,3 @@
-usuartio: admin
+server: localhost, 1433
+login: sa
 senha: Ab12345678@
