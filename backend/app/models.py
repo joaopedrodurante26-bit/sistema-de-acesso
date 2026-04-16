@@ -1,9 +1,9 @@
 from datetime import datetime, timezone
 from enum import Enum
 
-import bcrypt
 from flask_login import UserMixin
 from sqlalchemy import CheckConstraint
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from .extensions import db
 
@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False, index=True)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(10), nullable=False, default=UserRole.USER.value)
     is_active = db.Column(db.Boolean, nullable=False, default=True)
     created_at = db.Column(
@@ -37,14 +37,10 @@ class User(UserMixin, db.Model):
     )
 
     def set_password(self, plain_password):
-        hashed = bcrypt.hashpw(plain_password.encode("utf-8"), bcrypt.gensalt())
-        self.password_hash = hashed.decode("utf-8")
+        self.password_hash = generate_password_hash(plain_password)
 
     def check_password(self, plain_password):
-        return bcrypt.checkpw(
-            plain_password.encode("utf-8"),
-            self.password_hash.encode("utf-8"),
-        )
+        return check_password_hash(self.password_hash, plain_password)
 
     def to_dict(self):
         return {

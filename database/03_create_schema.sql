@@ -6,7 +6,7 @@ BEGIN
     CREATE TABLE dbo.users (
         id INT IDENTITY(1,1) PRIMARY KEY,
         username NVARCHAR(80) NOT NULL UNIQUE,
-        password_hash NVARCHAR(128) NOT NULL,
+        password_hash NVARCHAR(255) NOT NULL,
         role NVARCHAR(10) NOT NULL CONSTRAINT df_users_role DEFAULT 'USER',
         is_active BIT NOT NULL CONSTRAINT df_users_is_active DEFAULT 1,
         created_at DATETIME2(0) NOT NULL CONSTRAINT df_users_created_at DEFAULT SYSUTCDATETIME(),

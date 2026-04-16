@@ -6,7 +6,7 @@
 
 ## 2) Install dependencies
 
-Use a Python distribution that supports binary wheels for `pyodbc` and `bcrypt`.
+Use a Python distribution that supports binary wheels for `pyodbc`.
 
 ```bash
 python -m venv .venv
